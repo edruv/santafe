@@ -34,9 +34,9 @@
 							<label for="categoria">Categoria</label>
 							<select name="categoria" id="categoria" class="custom-select">
 								<option disabled selected>Seleccionar Categoria</option>
-										@foreach ($categs as $cat)
-												<option value="{{$cat->id}}">{{ $cat->nombre }}</option>
-										@endforeach
+								@foreach ($categs as $cat)
+									<option value="{{$cat->id}}">{{ $cat->nombre }}</option>
+								@endforeach
 							</select>
 						</div>
 					</div>

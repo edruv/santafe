@@ -36,14 +36,8 @@
 							<label for="categoria">Categoria</label>
 							<select name="categoria" id="categoria" class="custom-select">
 								<option disabled selected>Seleccionar Categoria</option>
-								@foreach ($categParent as $parent)
-									<optgroup label="{{ $parent->nombre}}">
-										@foreach ($categs as $cat)
-											@if ($cat->parent == $parent->id)
-												<option @if ($cat->id == $product->categoria) selected @endif value="{{$cat->id}}" data-parent="{{$parent->id}}">{{ $cat->nombre }}</option>
-											@endif
-										@endforeach
-									</optgroup>
+								@foreach ($categs as $cat)
+									<option value="{{$cat->id}}">{{ $cat->nombre }}</option>
 								@endforeach
 							</select>
 						</div>
@@ -84,7 +78,7 @@
 @section('jqueryExtra')
 	<script type="text/javascript">
 		$(document).ready(function() {
-			
+
 			$("#categoria").change(function(e) {
 				var inf = $(this).find(':selected').attr('data-parent');
 				if (inf == 4) {

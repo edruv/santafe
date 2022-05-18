@@ -252,7 +252,7 @@
 			<span class="fs-1 fls-3">Recintos</span> <span class="" style="color:#5E5B5C;">Para Eventos</span>
 		</div>
 		<div class="">
-			<div id="" class="owl-carouseltwo">
+			<div id="owl-carouseltwo" class="owl-carouseltwo">
 				@foreach ($desta as $dest)
 					@if ($dest->categoria == 4 )
 						{{-- <div class="col-12 col-md recinto-card p-1"> --}}
@@ -363,8 +363,8 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$(".owl-carousel").owlCarousel({
-				loop:false,
-				autoplay:false,
+				loop:true,
+				autoplay:true,
 				// autoplayTimeout:2000,
 				// margin:10,
 				responsiveClass:true,
@@ -398,18 +398,18 @@
 			// 	navText : ["<i class='text-white fa fa-chevron-left'></i><i class='text-white fa fa-chevron-left'></i>","<i class='text-white fa fa-chevron-right'></i><i class='text-white fa fa-chevron-right'></i>"],
 			// 	navText:["<div class='nav-btn prev-slide'></div>","<div class='nav-btn next-slide'></div>"],
 			// });
-			$(".owl-carouseltwo").owlCarousel({
+			$("#owl-carouseltwo").owlCarousel({
 				loop:false,
 				autoplay:false,
 				// autoplayTimeout:2000,
 				// margin:10,
 				responsiveClass:true,
 				responsive:{
-					// 0:{
-					// 	items:1,
-					// },
-					700:{
+					0:{
 						items:1,
+					},
+					700:{
+						items:5,
 					},
 					1200:{
 						items:5,
