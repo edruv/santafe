@@ -39,6 +39,15 @@
 					<div class="carousel-item @if ($loop->index == 0 ) active @endif">
 						@if ($item->image)
 							<img src="{{ asset('img/photos/sliders/'.$item->image) }}" class="d-block w-100" alt="{{ $item->image }}">
+							@if ($item->url)
+								<div class="carousel-caption d-none d-md-block">
+									<div>
+										<a href="{{$item->url}}" class="btn btn-lg w-25 btn-primary" style="background:#000;border:2px #000 solid;">
+											{{$item->titulo}}
+										</a>
+									</div>
+								</div>
+							@endif
 						@else
 							<div class="embed-responsive embed-responsive-21by9">
 								<iframe class="d-block w-100" style="height:600px;" src="https://www.youtube.com/embed/{{$item->video['idVideo']}}?rel=0" allowfullscreen></iframe>

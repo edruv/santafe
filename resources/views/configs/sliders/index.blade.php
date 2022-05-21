@@ -69,6 +69,20 @@
 					<a href="{{ asset('img/photos/sliders/'.$slide->image)}}" target="_blank">
 						<img src="{{ asset('img/photos/sliders/'.$slide->image)}}" class="card-img-top" alt="{{$slide->image}}">
 					</a>
+					<div class="card-body p-2">
+						<div class="text-center mb-1">
+							<small><label class="mb-0" for="titulo">Titulo</label></small>
+							<input type="text" name="titulo" id="titulo" class="form-control form-control-sm editarajax" data-id="{{$slide->id}}" data-table="carrusel" data-campo="titulo"  value="{{ $slide->titulo }}">
+						</div>
+						{{-- <div class="text-center mb-1">
+							<small><label class="mb-0" for="subtitulo">Subtitulo</label></small>
+							<input type="text" name="subtitulo" id="subtitulo" class="form-control form-control-sm editarajax" data-id="{{$slide->id}}" data-table="carrusel" data-campo="subtitulo"  value="{{ $slide->subtitulo }}">
+						</div> --}}
+						<div class="text-center mb-1">
+							<small><label class="mb-0" for="url">URL</label></small>
+							<input type="text" name="url" id="url" class="form-control form-control-sm editarajax" data-id="{{$slide->id}}" data-table="carrusel" data-campo="url"  value="{{ $slide->url }}">
+						</div>
+					</div>
 					@else
 					<a href="{{$slide->video['url']}}" target="_blank">
 						<div class="card-img-top">
@@ -77,6 +91,7 @@
 						</div>
 					</a>
 					@endif
+
 				</div>
 			</div>
 		@endforeach
