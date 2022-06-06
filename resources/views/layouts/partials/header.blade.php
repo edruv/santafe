@@ -29,7 +29,7 @@
 							PARA EVENTOS
 						</button>
 					</li>
-					<li class="nav-item mx-3">
+					<li class="nav-item mx-3 d-none">
 						<button type="button" class="nav-link btn btn-link text-start text-white" data-bs-toggle="modal" data-bs-target="#recinto">
 							RECINTOS <br>
 							PARA EVENTOS

@@ -292,7 +292,7 @@
 					@endif
 				@endforeach
 			</div>
-			{{-- <div class="col-12 col-md recinto-card p-1">
+			<div class="col-12 col-md recinto-card p-1">
 				<div class="card border-0">
 					<img src="{{ asset("img/photos/tmps/demo (2).png") }}" class="card-img-top img-fluid" alt="demo (2).png">
 					<div class="card-body text-center">
@@ -351,7 +351,7 @@
 						</p>
 					</div>
 				</div>
-			</div> --}}
+			</div>
 		</div>
 		<div class="my-3 d-flex justify-content-start align-items-center">
 			<div>
@@ -407,27 +407,44 @@
 			// 	navText : ["<i class='text-white fa fa-chevron-left'></i><i class='text-white fa fa-chevron-left'></i>","<i class='text-white fa fa-chevron-right'></i><i class='text-white fa fa-chevron-right'></i>"],
 			// 	navText:["<div class='nav-btn prev-slide'></div>","<div class='nav-btn next-slide'></div>"],
 			// });
+
 			$("#owl-carouseltwo").owlCarousel({
-				loop:false,
-				autoplay:false,
-				// autoplayTimeout:2000,
-				// margin:10,
-				responsiveClass:true,
+				loop:true,
+				margin:10,
+				nav:true,
 				responsive:{
-					0:{
-						items:1,
-					},
-					700:{
-						items:5,
-					},
-					1200:{
-						items:5,
-					}
-				},
-				nav: false,
-				// navText : ["<i class='text-white fa fa-chevron-left'></i><i class='text-white fa fa-chevron-left'></i>","<i class='text-white fa fa-chevron-right'></i><i class='text-white fa fa-chevron-right'></i>"],
-				// navText:["<div class='nav-btn prev-slide'></div>","<div class='nav-btn next-slide'></div>"],
+				    0:{
+				        items:1
+				    },
+				    600:{
+				        items:5
+				    },
+				    1000:{
+				        items:5
+				    }
+				}
 			});
+			// $("#owl-carouseltwo").owlCarousel({
+			// 	loop:false,
+			// 	autoplay:false,
+			// 	// autoplayTimeout:2000,
+			// 	// margin:10,
+			// 	responsiveClass:true,
+			// 	responsive:{
+			// 		0:{
+			// 			items:1,
+			// 		},
+			// 		700:{
+			// 			items:5,
+			// 		},
+			// 		1200:{
+			// 			items:5,
+			// 		}
+			// 	},
+			// 	nav: false,
+			// 	// navText : ["<i class='text-white fa fa-chevron-left'></i><i class='text-white fa fa-chevron-left'></i>","<i class='text-white fa fa-chevron-right'></i><i class='text-white fa fa-chevron-right'></i>"],
+			// 	// navText:["<div class='nav-btn prev-slide'></div>","<div class='nav-btn next-slide'></div>"],
+			// });
 		});
 	</script>
 @endsection
