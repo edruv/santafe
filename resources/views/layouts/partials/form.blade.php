@@ -1,7 +1,7 @@
 <div class="h1 text-center">
 	SOLICITA TU COTIZACIÓN
 </div>
-<form action="" method="post">
+<form action="{{ route('formularioContac')}}" method="post">
 	@csrf
 	<div class="row d-flex justify-content-center mx-auto py-3">
 		<div class="col-12 col-md ">

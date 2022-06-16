@@ -6,8 +6,6 @@
 				<div class="w-100 mb-3" style="background:#fff;height:5px;"></div>
 				<ul class="list-unstyled ms-3">
 					<li><a href="{{ route('front.index') }}">INICIO</a></li>
-					{{-- <li><a href="{{ route('front.productos') }}">PRODUCTOS</a></li> --}}
-					{{-- <li><a href="{{ route('front.aboutus') }}">NOSOTROS</a></li> --}}
 					<li><a href="{{ route('front.contacto') }}">CONTACTO</a></li>
 				</ul>
 			</div>
@@ -15,10 +13,10 @@
 				<p class="">SOCIAL</p>
 				<div class="w-100 mb-3" style="background:#fff;height:5px;"></div>
 				<ul class="list-unstyled ms-3">
-					<li><a href="{{ route('front.index') }}">INICIO</a></li>
-					{{-- <li><a href="{{ route('front.productos') }}">PRODUCTOS</a></li> --}}
-					{{-- <li><a href="{{ route('front.aboutus') }}">NOSOTROS</a></li> --}}
-					<li><a href="{{ route('front.contact') }}">CONTACTO 2</a></li>
+					<li><a href="{{ route('front.contacto') }}">CONTACTO</a></li>
+					<li><a href="{{ route('front.faqs') }}">FAQ</a></li>
+					<li><a href="{{ route('front.aviso') }}">AVISO DE PRIVACIDAD</a></li>
+					<li><a href="{{ route('front.contact') }}">COTIZACION</a></li>
 				</ul>
 			</div>
 			<div class="col-12 col-lg-4">
@@ -57,7 +55,7 @@
 	<div id="wozial">
 		<div class="container">
 			<div class="text-center text-uppercase py-3">
-				IMBO &copy; Todos los derechos reservados. Desarrollado por <a href="https://wozial.com/" target="_blank" class="">Wozial Marketing Lovers</a>.
+				SANTA FE SUA &copy; Todos los derechos reservados. Desarrollado por <a href="https://wozial.com/" target="_blank" class="">Wozial Marketing Lovers</a>.
 			</div>
 		</div>
 	</div>

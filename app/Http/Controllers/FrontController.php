@@ -303,23 +303,19 @@ class FrontController extends Controller
 		return view('front.politicas',compact("politica"));
 	}
 
-	public function preguntas(){
-		$preguntas = Faq::all();
-		return view('front.faq',compact("preguntas"));
+	public function faqs(){
+		$faqs = Faq::all();
+		return view('front.faq',compact("faqs"));
 	}
 
 	// correo de contacto normal
 	public function mailcontact(Request $request){
 		$validate = Validator::make($request->all(),[
 			'nombre' => 'required',
-			'empresa' => 'nullable',
-			'ciudad' => 'nullable',
 			'correo' => 'required',
 			'telefono' => 'required|numeric',
 			'mensaje' => 'nullable',
 		],[],[]);
-
-
 
 		if ($validate->fails()) {
 			\Toastr::error('Error, se requieren todos datos');
@@ -328,8 +324,6 @@ class FrontController extends Controller
 
 		$data = array(
 			'nombre' => $request->nombre,
-			'empresa' => $request->empresa,
-			'ciudad' => $request->ciudad,
 			'correo' => $request->correo,
 			'telefono' => $request->telefono,
 			'mensaje' => $request->mensaje,
@@ -338,6 +332,72 @@ class FrontController extends Controller
 		);
 
 		$html = view('front.mailcontact',compact('data'));
+		// return view('front.mailcontact',compact('data'));
+
+		$config = Configuracion::first();
+
+		$mail = new PHPMailer;
+		$mail->isSMTP();
+		// $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+		$mail->Host = $config->remitentehost;
+		$mail->Port = $config->remitenteport;
+		$mail->SMTPAuth = true;
+		$mail->Username = $config->remitente;
+		$mail->Password = $config->remitentepass;
+		$mail->SMTPSecure = $config->remitenteseguridad;
+		$mail->SetFrom($config->remitente, $config->title);
+		$mail->isHTML(true);
+
+		$mail->addAddress($config->destinatario,$config->title);
+		if (!empty($config->destinatario2)) {
+			$mail->AddBCC($config->destinatario2,$config->title);
+		}
+		$mail->Subject = $data['asunto'];
+		$mail->msgHTML($html);
+		$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+
+		if ($mail->send()) {
+			\Toastr::success('Correo enviado Exitosamente!');
+			return redirect()->back();
+		} else {
+
+			\Toastr::error('No se ha podido enviar el correo/ '. $mail->ErrorInfo);
+			return redirect()->back();
+		}
+	}
+
+	public function mailcontactTwo(Request $request){
+		$validate = Validator::make($request->all(),[
+			'nombre' => 'required',
+			'telefono' => 'required|numeric',
+			'email' => 'required',
+			'fecha' => 'nullable',
+			'servicio' => 'nullable',
+			'ubicacion' => 'nullable',
+			'numero' => 'nullable',
+		],[],[]);
+
+		if ($validate->fails()) {
+			\Toastr::error('Error, se requieren todos datos');
+			return redirect()->back();
+		}
+
+		$data = array(
+			'nombre' => $request->nombre,
+			'telefono' => $request->telefono,
+			'email' => $request->email,
+			'fecha' => $request->fecha,
+			'servicio' => $request->servicio,
+			'ubicacion' => $request->ubicacion,
+			'numero' => $request->numero,
+			'mensaje' => $request->mensaje,
+			'asunto' => 'Formulario de cotizacion',
+			'hoy' => Carbon::now()->format('d-m-Y')
+		);
+
+		$html = view('front.mailcontact2',compact('data'));
+		// return view('front.mailcontact2',compact('data'));
 
 		$config = Configuracion::first();
 

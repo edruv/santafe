@@ -142,7 +142,11 @@ class ProductoController extends Controller
   			'categoria' => 'required',
   			'descripcion' => 'required',
   			'descripcion_rapida' => 'required',
-  		], [], [
+  			'ciudad' => 'required_if:categoria,4',
+  		], [
+				// 'required_if' => 'The :attribute field is required when :other is recintos para eventos.',
+				'required_if' => 'El campo :attribute es obligatorio cuando el campo :other es recintos para eventos.',
+			], [
         'descripcion_rapida' => 'descripcion rapida',
       ]);
 
@@ -150,7 +154,6 @@ class ProductoController extends Controller
   			\Toastr::error('Error, se requieren mas datos');
   			return redirect()->back()->withErrors($validate);
   		}
-
 
   		$product->nombre = strtolower($request->nombre);
       $product->categoria = $request->categoria;

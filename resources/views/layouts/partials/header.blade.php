@@ -11,33 +11,56 @@
 
 			<div class="collapse navbar-collapse" id="navbarExp">
 				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-					<li class="nav-item mx-3">
-						<button type="button" class="nav-link btn btn-link text-start text-white" data-bs-toggle="modal" data-bs-target="#empresarial">
-							EVENTOS <br>
+					<li class="nav-item dropdown mx-md-3">
+						<a class="nav-link dropdown-toggle text-start text-white" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">
 							EMPRESARIALES
-						</button>
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdown01">
+							@foreach ($prods as $prod)
+								@if ($prod->categoria == 1)
+									<li><a class="dropdown-item text-uppercase" href="{{ route('front.empresarial',$prod->id) }}">{{$prod->nombre}}</a></li>
+								@endif
+							@endforeach
+						</ul>
 					</li>
-					<li class="nav-item mx-3">
-						<button type="button" class="nav-link btn btn-link text-start text-white" data-bs-toggle="modal" data-bs-target="#social">
-							EVENTOS <br>
+					<li class="nav-item dropdown mx-md-3">
+						<a class="nav-link dropdown-toggle text-start text-white" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false">
 							SOCIALES
-						</button>
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdown02">
+							@foreach ($prods as $prod)
+								@if ($prod->categoria == 2)
+									<li><a class="dropdown-item text-uppercase" href="{{ route('front.empresarial',$prod->id) }}">{{$prod->nombre}}</a></li>
+								@endif
+							@endforeach
+						</ul>
 					</li>
-					<li class="nav-item mx-3">
-						<button type="button" class="nav-link btn btn-link text-start text-white" data-bs-toggle="modal" data-bs-target="#musica">
-							MUSICA <br>
-							PARA EVENTOS
-						</button>
+					<li class="nav-item dropdown mx-md-3 my-auto">
+						<a class="nav-link dropdown-toggle text-start text-white" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">
+							MUSICA
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdown03">
+							@foreach ($prods as $prod)
+								@if ($prod->categoria == 3)
+									<li><a class="dropdown-item text-uppercase" href="{{ route('front.empresarial',$prod->id) }}">{{$prod->nombre}}</a></li>
+								@endif
+							@endforeach
+						</ul>
 					</li>
-					<li class="nav-item mx-3 d-none">
-						<button type="button" class="nav-link btn btn-link text-start text-white" data-bs-toggle="modal" data-bs-target="#recinto">
-							RECINTOS <br>
-							PARA EVENTOS
-						</button>
+					<li class="nav-item dropdown mx-md-3 my-auto d-none">
+						<a class="nav-link dropdown-toggle text-start text-white" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">
+							RECINTOS
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdown04">
+							@foreach ($prods as $prod)
+								@if ($prod->categoria == 4)
+									<li><a class="dropdown-item text-uppercase" href="{{ route('front.empresarial',$prod->id) }}">{{$prod->nombre}}</a></li>
+								@endif
+							@endforeach
+						</ul>
 					</li>
-					<li class="nav-item mx-3">
+					<li class="nav-item mx-md-3 my-auto">
 						<div class="nav-link text-start text-white">
-							Informacion
 							<a class="nav-link p-0 text-white" href="tel:{{$config->whatsapp}}" style="text-decoration:none;">Tel: {{$config->whatsapp}}</a>
 						</div>
 					</li>
@@ -45,100 +68,4 @@
 			</div>
 		</div>
 	</nav>
-	<div class="modal fade" id="empresarial" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="empresarialLabel" aria-hidden="true">
-		<div class="modal-dialog modal-fullscreen">
-			<div class="modal-content bg-black">
-				<div class="modal-header">
-					<h5 class="modal-title text-white" id="empresarialLabel">EVENTOS EMPRESARIALES</h5>
-					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<ul class="list-unstyled ms-2">
-						@foreach ($prods as $prod)
-							@if ($prod->categoria == 1)
-								<li>
-									<a class="d-block text-uppercase fls-2" href="{{ route('front.empresarial',$prod->id) }}">{{$prod->nombre}}</a>
-								</li>
-							@endif
-						@endforeach
-					</ul>
-				</div>
-				{{-- <div class="modal-footer">
-					<button type="button" class="btn btn-secondary bg-santafe-sua" data-bs-dismiss="modal">Cerrar</button>
-				</div> --}}
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="social" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="socialLabel" aria-hidden="true">
-		<div class="modal-dialog modal-fullscreen">
-			<div class="modal-content bg-black">
-				<div class="modal-header">
-					<h5 class="modal-title text-white" id="socialLabel">EVENTOS SOCIALES</h5>
-					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<ul class="list-unstyled ms-2">
-						@foreach ($prods as $prod)
-							@if ($prod->categoria == 2)
-								<li>
-									<a class="d-block text-uppercase fls-2" href="{{ route('front.social',$prod->id) }}">{{$prod->nombre}}</a>
-								</li>
-							@endif
-						@endforeach
-					</ul>
-				</div>
-				{{-- <div class="modal-footer">
-					<button type="button" class="btn btn-secondary bg-santafe-sua" data-bs-dismiss="modal">Cerrar</button>
-				</div> --}}
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="musica" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="musicaLabel" aria-hidden="true">
-		<div class="modal-dialog modal-fullscreen">
-			<div class="modal-content bg-black">
-				<div class="modal-header">
-					<h5 class="modal-title text-white" id="musicaLabel">MUSICA PARA EVENTOS</h5>
-					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<ul class="list-unstyled ms-2">
-						@foreach ($prods as $prod)
-							@if ($prod->categoria == 3)
-								<li>
-									<a class="d-block text-uppercase fls-2" href="{{ route('front.musica',$prod->id) }}">{{$prod->nombre}}</a>
-								</li>
-							@endif
-						@endforeach
-					</ul>
-				</div>
-				{{-- <div class="modal-footer">
-					<button type="button" class="btn btn-secondary bg-santafe-sua" data-bs-dismiss="modal">Cerrar</button>
-				</div> --}}
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="recinto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="recintoLabel" aria-hidden="true">
-		<div class="modal-dialog modal-fullscreen">
-			<div class="modal-content bg-black">
-				<div class="modal-header">
-					<h5 class="modal-title text-white" id="recintoLabel">RECINTOS PARA EVENTOS</h5>
-					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<ul class="list-unstyled ms-2">
-						@foreach ($prods as $prod)
-							@if ($prod->categoria == 4)
-								<li>
-									<a class="d-block text-uppercase fls-2" href="{{ route('front.recinto',$prod->id) }}">{{$prod->nombre}}</a>
-								</li>
-							@endif
-						@endforeach
-					</ul>
-				</div>
-				{{-- <div class="modal-footer">
-					<button type="button" class="btn btn-secondary bg-santafe-sua" data-bs-dismiss="modal">Cerrar</button>
-				</div> --}}
-			</div>
-		</div>
-	</div>
 </header>

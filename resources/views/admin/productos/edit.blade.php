@@ -37,7 +37,7 @@
 							<select name="categoria" id="categoria" class="custom-select">
 								<option disabled selected>Seleccionar Categoria</option>
 								@foreach ($categs as $cat)
-									<option value="{{$cat->id}}">{{ $cat->nombre }}</option>
+									<option @if ($product->categoria == $cat->id) selected @endif value="{{$cat->id}}">{{ $cat->nombre }}</option>
 								@endforeach
 							</select>
 						</div>
@@ -78,9 +78,15 @@
 @section('jqueryExtra')
 	<script type="text/javascript">
 		$(document).ready(function() {
+			@if ($product->categoria == 4 )
+			$('#ciudad').parent().show();
+			@else
+			$('#ciudad').parent().hide();
+			@endif
 
 			$("#categoria").change(function(e) {
-				var inf = $(this).find(':selected').attr('data-parent');
+				// var inf = $(this).find(':selected').attr('data-parent');
+				var inf = $(this).val();
 				if (inf == 4) {
 					$('#ciudad').parent().show();
 				}else {

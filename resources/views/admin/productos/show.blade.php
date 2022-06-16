@@ -28,7 +28,7 @@
 					<div>
 						<span class="font-weight-bold">Categoria:</span> <span>{{$product->categoria->nombre}} </span>
 					</div>
-					@if (!empty($product->ciudad))
+					@if (!empty($product->ciudad) && $product->categoria->id == 4)
 						<div>
 							<span class="font-weight-bold">Ciudad:</span> <span>{{$product->ciudad}} </span>
 						</div>

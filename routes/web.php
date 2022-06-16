@@ -29,6 +29,13 @@ Route::name('front.')->group(function(){
 	Route::get('recintos/{search?}', 'FrontController@recintos')->name('recintos');
 	Route::get('recinto/{product?}', 'FrontController@details')->name('recinto');
 
+	Route::get('garantias','FrontController@garantias')->name('garantias');
+	Route::get('aviso-de-privacidad','FrontController@aviso')->name('aviso');
+	// Route::get('metodos-de-pago','FrontController@pagos')->name('pagos');
+	Route::get('devoluciones','FrontController@devoluciones')->name('devoluciones');
+	Route::get('terminos-y-condiciones','FrontController@tyc')->name('tyc');
+	Route::get('faqs', 'FrontController@faqs')->name('faqs');
+
 });
 
 // rutas al admin
@@ -255,13 +262,10 @@ Route::prefix('test')->group(function(){
 // });
 
 /** rutas de los formularios de contacto */
-Route::post('/formularioContac', 'FrontController@mailcontact')->name('formularioContac');
-
-Route::post('/formularioPieza', 'FrontController@mailcontactPieza')->name('formularioPieza');
+Route::post('/contacto', 'FrontController@mailcontact')->name('formularioContac');
+Route::post('/contactForm', 'FrontController@mailcontactTwo')->name('mailcontactTwo');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('clear')->group(function(){
 	//Clear Cache facade value:

@@ -48,7 +48,7 @@ label {
 				</div>
 			</div>
 			<div class="">
-				<form action="" method="post">
+				<form action="{{ route('formularioContac')}}" method="post">
 					@csrf
 					<div class="row d-flex justify-content-center mx-auto py-3">
 						<div class="col-12 col-md ">
@@ -60,9 +60,9 @@ label {
 						<div class="col-12 col-md">
 							<input type="tel" name="telefono" id="telefono" placeholder="WHATSAPP:" class="form-control bordeagenda">
 						</div>
-						<div class="col-12 col-md">
+						{{-- <div class="col-12 col-md">
 							<input type="text" name="evento" id="evento" placeholder="EVENTO:" class="form-control bordeagenda">
-						</div>
+						</div> --}}
 						<div class="col-12 py-3">
 							<textarea name="mensaje" id="mensaje" placeholder="MENSAJE:" class="form-control bordeagenda" rows="5" style="resize:none;"></textarea>
 						</div>

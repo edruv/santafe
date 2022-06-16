@@ -3,8 +3,10 @@
 @section('title', 'Inicio')
 @section('cssExtras')
 	<link rel="stylesheet" href="{{asset('css/index.css')}}">
-	<link rel="stylesheet" href="{{ asset('css/owlcarousel/owl.carousel.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/owlcarousel/owl.theme.default.min.css') }}">
+	{{-- <link rel="stylesheet" href="{{ asset('css/owlcarousel/owl.carousel.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/owlcarousel/owl.theme.default.min.css') }}"> --}}
+	<link rel="stylesheet" href="{{ asset('vendor/slick/slick.css') }}">
+	<link rel="stylesheet" href="{{ asset('vendor/slick/slick-theme.css') }}">
 @endsection
 @section('styleExtras')
 <style media="screen">
@@ -25,7 +27,7 @@
 .ytp-chrome-controls {
 	margin: auto 8% !important;
 }
-.owl-carousel a{
+.sli-carousel a, .sli-carouselTree a{
 	color: #fff;
 	text-decoration: none;
 }
@@ -70,7 +72,7 @@
 	<section class="container">
 		<div class="row mx-auto py-4">
 			<div class="col-12 col-md-5">
-				<div id="" class="owl-carousel">
+				<div id="" class="sli-carousel">
 					@foreach ($desta as $dest)
 						@if ($dest->categoria == 1 )
 						<div class="card bg-black">
@@ -114,7 +116,7 @@
 				</div>
 			</div>
 			<div class="col-12 col-md-5">
-				<div class="owl-carousel">
+				<div class="sli-carousel">
 					@foreach ($desta as $dest)
 						@if ($dest->categoria == 2 )
 							<div class="card bg-black">
@@ -186,34 +188,36 @@
 					<a href="{{ route('front.contact')}}" class="btn btn-santafe">VER MÁS</a>
 				</div>
 			</div>
-			<div class="col-12 col-md-5">
-				<div class="owl-carousel">
+			<div class="col-12 col-md">
+				<div class="sli-carouselTree">
 					@foreach ($desta as $dest)
 						@if ($dest->categoria == 3 )
-							<div class="card bg-black">
-								@if (!empty($dest->photo->image))
-									<a href="{{ route('front.musica',$dest->id)}}">
-										<img src="{{ asset("img/photos/productos/".$dest->photo->image) }}" class="card-img-top img-fluid" alt="{{$dest->photo->image}}">
-									</a>
-								@else
-									<a href="{{ route('front.musica',$dest->id)}}">
-										<img src="{{ asset("img/design/camara.jpg") }}" class="card-img-top img-fluid" alt="{{$dest->nombre}}">
-									</a>
-								@endif
-								<div class="card-body">
-									<h5 class="card-title text-uppercase">
+							<div class="px-1">
+								<div class="card bg-black">
+									@if (!empty($dest->photo->image))
 										<a href="{{ route('front.musica',$dest->id)}}">
-											{{ $dest->nombre }}
+											<img src="{{ asset("img/photos/productos/".$dest->photo->image) }}" class="card-img-top img-fluid" alt="{{$dest->photo->image}}">
 										</a>
-									</h5>
-									<p class="card-text">
-										{!! $dest->descripcion_rapida !!}
-									</p>
-								</div>
-								<div class="d-flex justify-content-end px-0">
-									<a href="{{ route('front.musica',$dest->id)}}" class="p-2 me-2 mb-2 text-dark" style="background-color: #fff;">
-										<span class="p-2"> <i class="fas fa-chevron-right"></i> </span>
-									</a>
+									@else
+										<a href="{{ route('front.musica',$dest->id)}}">
+											<img src="{{ asset("img/design/camara.jpg") }}" class="card-img-top img-fluid" alt="{{$dest->nombre}}">
+										</a>
+									@endif
+									<div class="card-body">
+										<h5 class="card-title text-uppercase">
+											<a href="{{ route('front.musica',$dest->id)}}">
+												{{ $dest->nombre }}
+											</a>
+										</h5>
+										<p class="card-text">
+											{!! $dest->descripcion_rapida !!}
+										</p>
+									</div>
+									<div class="d-flex justify-content-end px-0">
+										<a href="{{ route('front.musica',$dest->id)}}" class="p-2 me-2 mb-2 text-dark" style="background-color: #fff;">
+											<span class="p-2"> <i class="fas fa-chevron-right"></i> </span>
+										</a>
+									</div>
 								</div>
 							</div>
 						@endif
@@ -261,7 +265,7 @@
 			<span class="fs-1 fls-3">Recintos</span> <span class="" style="color:#5E5B5C;">Para Eventos</span>
 		</div>
 		<div class="">
-			<div id="owl-carouseltwo" class="owl-carouseltwo">
+			<div id="owl-carouseltwo" class="sli-carouseltwo">
 				@foreach ($desta as $dest)
 					@if ($dest->categoria == 4 )
 						{{-- <div class="col-12 col-md recinto-card p-1"> --}}
@@ -291,66 +295,66 @@
 						</div>
 					@endif
 				@endforeach
-			</div>
-			<div class="col-12 col-md recinto-card p-1">
-				<div class="card border-0">
-					<img src="{{ asset("img/photos/tmps/demo (2).png") }}" class="card-img-top img-fluid" alt="demo (2).png">
-					<div class="card-body text-center">
-						<h5 class="card-title">Terraza</h5>
-						<div style=" background:#000;padding:1px;width:50%;margin:auto"></div>
-						<p class="card-text">
-							Guadalajara
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-12 col-md recinto-card p-1">
-				<div class="card border-0">
-					<img src="{{ asset("img/photos/tmps/demo (2).png") }}" class="card-img-top img-fluid" alt="demo (2).png">
-					<div class="card-body text-center">
-						<h5 class="card-title">Terraza</h5>
-						<div style=" background:#000;padding:1px;width:50%;margin:auto"></div>
-						<p class="card-text">
-							Guadalajara
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-12 col-md recinto-card p-1">
-				<div class="card border-0">
-					<img src="{{ asset("img/photos/tmps/demo (2).png") }}" class="card-img-top img-fluid" alt="demo (2).png">
-					<div class="card-body text-center">
-						<h5 class="card-title">Terraza</h5>
-						<div style=" background:#000;padding:1px;width:50%;margin:auto"></div>
-						<p class="card-text">
-							Guadalajara
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-12 col-md recinto-card p-1">
-				<div class="card border-0">
-					<img src="{{ asset("img/photos/tmps/demo (2).png") }}" class="card-img-top img-fluid" alt="demo (2).png">
-					<div class="card-body text-center">
-						<h5 class="card-title">Terraza</h5>
-						<div style=" background:#000;padding:1px;width:50%;margin:auto"></div>
-						<p class="card-text">
-							Guadalajara
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-12 col-md recinto-card p-1">
-				<div class="card border-0">
-					<img src="{{ asset("img/photos/tmps/demo (2).png") }}" class="card-img-top img-fluid" alt="demo (2).png">
+				{{-- <div class="col-12 col-md recinto-card p-1">
+					<div class="card border-0">
+						<img src="{{ asset("img/photos/tmps/demo (2).png") }}" class="card-img-top img-fluid" alt="demo (2).png">
 						<div class="card-body text-center">
-						<h5 class="card-title">Terraza</h5>
-						<div style=" background:#000;padding:1px;width:50%;margin:auto"></div>
-						<p class="card-text">
-							Guadalajara
-						</p>
+							<h5 class="card-title">Terraza</h5>
+							<div style=" background:#000;padding:1px;width:50%;margin:auto"></div>
+							<p class="card-text">
+								Guadalajara
+							</p>
+						</div>
 					</div>
 				</div>
+				<div class="col-12 col-md recinto-card p-1">
+					<div class="card border-0">
+						<img src="{{ asset("img/photos/tmps/demo (2).png") }}" class="card-img-top img-fluid" alt="demo (2).png">
+						<div class="card-body text-center">
+							<h5 class="card-title">Terraza</h5>
+							<div style=" background:#000;padding:1px;width:50%;margin:auto"></div>
+							<p class="card-text">
+								Guadalajara
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md recinto-card p-1">
+					<div class="card border-0">
+						<img src="{{ asset("img/photos/tmps/demo (2).png") }}" class="card-img-top img-fluid" alt="demo (2).png">
+						<div class="card-body text-center">
+							<h5 class="card-title">Terraza</h5>
+							<div style=" background:#000;padding:1px;width:50%;margin:auto"></div>
+							<p class="card-text">
+								Guadalajara
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md recinto-card p-1">
+					<div class="card border-0">
+						<img src="{{ asset("img/photos/tmps/demo (2).png") }}" class="card-img-top img-fluid" alt="demo (2).png">
+						<div class="card-body text-center">
+							<h5 class="card-title">Terraza</h5>
+							<div style=" background:#000;padding:1px;width:50%;margin:auto"></div>
+							<p class="card-text">
+								Guadalajara
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md recinto-card p-1">
+					<div class="card border-0">
+						<img src="{{ asset("img/photos/tmps/demo (2).png") }}" class="card-img-top img-fluid" alt="demo (2).png">
+						<div class="card-body text-center">
+							<h5 class="card-title">Terraza</h5>
+							<div style=" background:#000;padding:1px;width:50%;margin:auto"></div>
+							<p class="card-text">
+								Guadalajara
+							</p>
+						</div>
+					</div>
+				</div> --}}
 			</div>
 		</div>
 		<div class="my-3 d-flex justify-content-start align-items-center">
@@ -365,65 +369,70 @@
 @endsection
 
 @section('jsLibExtras2')
-	<script src="{{ asset('js/owlcarousel/owl.carousel.min.js') }}"></script>
-	<script src="{{ asset('js/owlcarousel/owlCarousel2Rows.js') }}"></script>
+	{{-- <script src="{{ asset('js/owlcarousel/owl.carousel.min.js') }}"></script>
+	<script src="{{ asset('js/owlcarousel/owlCarousel2Rows.js') }}"></script> --}}
+	<script src="{{ asset('vendor/slick/slick.js') }}"></script>
 @endsection
 @section('jqueryExtra')
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$(".owl-carousel").owlCarousel({
-				loop:true,
-				autoplay:true,
-				// autoplayTimeout:2000,
-				// margin:10,
-				responsiveClass:true,
-				responsive:{
-					// 0:{
-					// 	items:1,
-					// },
-					700:{
-						items:1,
-					}
-				},
-				nav: false,
-				navText : ["<i class='text-white fa fa-chevron-left'></i><i class='text-white fa fa-chevron-left'></i>","<i class='text-white fa fa-chevron-right'></i><i class='text-white fa fa-chevron-right'></i>"],
-				navText:["<div class='nav-btn prev-slide'></div>","<div class='nav-btn next-slide'></div>"],
+			$('.sli-carousel').slick();
+			$('.sli-carouseltwo').slick({
+				dots: true,
+				infinite: false,
+				speed: 300,
+				slidesToShow: 4,
+				slidesToScroll: 4,
+				responsive: [
+			    {
+			      breakpoint: 600,
+			      settings: {
+			        slidesToShow: 2,
+			        slidesToScroll: 2
+			      }
+			    },
+			    {
+			      breakpoint: 480,
+			      settings: {
+			        slidesToShow: 1,
+			        slidesToScroll: 1
+			      }
+			    }
+				]
 			});
-			// $("#owl-carousel").owlCarousel({
-			// 	loop:false,
-			// 	autoplay:false,
-			// 	// autoplayTimeout:2000,
-			// 	// margin:10,
-			// 	responsiveClass:true,
-			// 	responsive:{
-			// 		// 0:{
-			// 		// 	items:1,
-			// 		// },
-			// 		700:{
-			// 			items:1,
-			// 		}
-			// 	},
-			// 	nav: false,
-			// 	navText : ["<i class='text-white fa fa-chevron-left'></i><i class='text-white fa fa-chevron-left'></i>","<i class='text-white fa fa-chevron-right'></i><i class='text-white fa fa-chevron-right'></i>"],
-			// 	navText:["<div class='nav-btn prev-slide'></div>","<div class='nav-btn next-slide'></div>"],
-			// });
+			$('.sli-carouselTree').slick({
+				dots: true,
+				infinite: false,
+				speed: 300,
+				slidesToShow: 2,
+				slidesToScroll: 2,
+				responsive: [
+			    {
+			      breakpoint: 480,
+			      settings: {
+			        slidesToShow: 1,
+			        slidesToScroll: 1
+			      }
+			    }
+				]
+			});
 
-			$("#owl-carouseltwo").owlCarousel({
-				loop:true,
-				margin:10,
-				nav:true,
-				responsive:{
-				    0:{
-				        items:1
-				    },
-				    600:{
-				        items:5
-				    },
-				    1000:{
-				        items:5
-				    }
-				}
-			});
+			// $("#owl-carouseltwo").owlCarousel({
+			// 	loop:true,
+			// 	margin:10,
+			// 	nav:true,
+			// 	responsive:{
+			// 	    0:{
+			// 	        items:1
+			// 	    },
+			// 	    600:{
+			// 	        items:5
+			// 	    },
+			// 	    1000:{
+			// 	        items:5
+			// 	    }
+			// 	}
+			// });
 			// $("#owl-carouseltwo").owlCarousel({
 			// 	loop:false,
 			// 	autoplay:false,

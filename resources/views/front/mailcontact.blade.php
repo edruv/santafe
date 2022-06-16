@@ -3,7 +3,7 @@
 	<meta content="text/html;charset=UTF-8" http-equiv="Content-Type">
 	<title>{{$data['asunto']}}</title>
 </head>
-<body style="margin:0;padding:0;background-color:#edb919;">
+<body style="margin:0;padding:0;background-color:#6E037A;">
 
 	<div style="
 		width:100%;
@@ -53,8 +53,6 @@
 			padding:20px;
 			">
 			<p>Nombre: <b> {{$data['nombre']}}</b></p>
-			<p>Empresa: <b> {{$data['empresa']}}</b></p>
-			<p>Ciudad: <b> {{$data['ciudad']}}</b></p>
 			<p>Telefono: <b> {{$data['telefono']}}</b></p>
 			<p>Email: <b> {{$data['correo']}}</b></p>
 			<p>Comentarios: <b> {{$data['mensaje']}}</b></p>
@@ -81,7 +79,7 @@
 
 	<div style="
 		width:100%;
-		background-color:#155aa8;
+		background-color:#000;
 		margin-top:0;
 		margin-bottom:0;
 		">
@@ -93,7 +91,7 @@
 			text-align:center;
 			color:white;
 			">
-			<a href="{{url('/')}}"><img src="{{asset('img/design/logo.png')}}" style="width: 200px;background:#FFF;padding: 5px;border-radius: 5px;"></a>
+			<a href="{{url('/')}}"><img src="{{asset('img/design/logo.png')}}" style="width: 200px;background:#6E037A;padding: 2px;border-radius: 5px;"></a>
 			<br /><br />
 			<a href="{{url('/')}}" style="color:white;">{{url('/')}}</a>
 			<br /><br />
