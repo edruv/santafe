@@ -30,7 +30,7 @@
 						<ul class="dropdown-menu" aria-labelledby="dropdown02">
 							@foreach ($prods as $prod)
 								@if ($prod->categoria == 2)
-									<li><a class="dropdown-item text-uppercase" href="{{ route('front.empresarial',$prod->id) }}">{{$prod->nombre}}</a></li>
+									<li><a class="dropdown-item text-uppercase" href="{{ route('front.social',$prod->id) }}">{{$prod->nombre}}</a></li>
 								@endif
 							@endforeach
 						</ul>
@@ -42,7 +42,7 @@
 						<ul class="dropdown-menu" aria-labelledby="dropdown03">
 							@foreach ($prods as $prod)
 								@if ($prod->categoria == 3)
-									<li><a class="dropdown-item text-uppercase" href="{{ route('front.empresarial',$prod->id) }}">{{$prod->nombre}}</a></li>
+									<li><a class="dropdown-item text-uppercase" href="{{ route('front.musica',$prod->id) }}">{{$prod->nombre}}</a></li>
 								@endif
 							@endforeach
 						</ul>
@@ -54,7 +54,7 @@
 						<ul class="dropdown-menu" aria-labelledby="dropdown04">
 							@foreach ($prods as $prod)
 								@if ($prod->categoria == 4)
-									<li><a class="dropdown-item text-uppercase" href="{{ route('front.empresarial',$prod->id) }}">{{$prod->nombre}}</a></li>
+									<li><a class="dropdown-item text-uppercase" href="{{ route('front.recinto',$prod->id) }}">{{$prod->nombre}}</a></li>
 								@endif
 							@endforeach
 						</ul>

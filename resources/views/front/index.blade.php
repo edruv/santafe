@@ -260,7 +260,7 @@
 			</div> --}}
 		</div>
 	</section>
-	<section class="container">
+	<section class="container d-none">
 		<div class="py-3 fs-4 fw-bold">
 			<span class="fs-1 fls-3">Recintos</span> <span class="" style="color:#5E5B5C;">Para Eventos</span>
 		</div>

@@ -5,7 +5,7 @@
 @section('styleExtras')
 	<style media="screen">
 	#formcontact .input-group .form-control {
-		background: #000;
+		/* background: #000; */
 		border: 2px #6E037A solid;
 		border-radius: 3em 0 0 3em;
 		color: #fff;
@@ -28,7 +28,7 @@
 	</style>
 @endsection
 @section('content')
-	<section class="bg-black mb-4">
+	<section class=" mb-4">
 		<div class="container">
 			<div class="row py-5">
 				<div class="col-12 col-md-6 text-center">

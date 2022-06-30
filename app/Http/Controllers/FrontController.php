@@ -248,15 +248,6 @@ class FrontController extends Controller
 				return view('front.terraza', compact(['product','productos_rel','testimonios']));
 			break;
 		}
-		// $variantes = ProductoVariante::where('producto', $product->id)->get();
-		// $medidas = ProductoMedida::where('producto',$product->id)->orderBy('orden', 'asc')->get();
-		// return view('front.detalles', compact('product','variantes','productos_rel','elements'));
-		// $data = array(
-		// 	'product' => $product,
-		// 	'medidas' => $medidas,
-		// );
-		// return response()->json($data);
-		// return $product;
 	}
 
 	public function recintos(Request $request){

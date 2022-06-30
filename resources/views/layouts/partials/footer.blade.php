@@ -54,7 +54,7 @@
 	</div>
 	<div id="wozial">
 		<div class="container">
-			<div class="text-center text-uppercase py-3">
+			<div class="text-center text-uppercase py-3 text-white">
 				SANTA FE SUA &copy; Todos los derechos reservados. Desarrollado por <a href="https://wozial.com/" target="_blank" class="">Wozial Marketing Lovers</a>.
 			</div>
 		</div>

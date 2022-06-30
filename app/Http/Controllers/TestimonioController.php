@@ -72,9 +72,8 @@ class TestimonioController extends Controller
      * @param  \App\Testimonio  $testimonio
      * @return \Illuminate\Http\Response
      */
-    public function edit(Testimonio $testimonio)
-    {
-        //
+    public function edit(Testimonio $testi) {
+			return view('admin.productos.testimonioedit', compact(['testi']));
     }
 
     /**
@@ -84,9 +83,24 @@ class TestimonioController extends Controller
      * @param  \App\Testimonio  $testimonio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Testimonio $testimonio)
-    {
-        //
+    public function update(Request $request, Testimonio $testi) {
+			$validate = Validator::make($request->all(), [
+				'nombre' => 'required',
+				'descripcion' => 'required',
+			], [], []);
+
+			if ($validate->fails()) {
+				\Toastr::error('Error, se requieren mas datos');
+				return redirect()->back()->withErrors($validate);
+			}
+
+			$testi->nombre = $request->nombre;
+  		$testi->descripcion = $request->descripcion;
+
+			$testi->save();
+
+  		\Toastr::success('Guardado');
+  		return redirect()->route('productos.show', $testi->producto);
     }
 
 		public function updateimg(Request $request, $producto) {
@@ -119,8 +133,20 @@ class TestimonioController extends Controller
      * @param  \App\Testimonio  $testimonio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Testimonio $testimonio)
-    {
-        //
+    public function destroy(Request $request){
+			if (empty($request->testimonio)) {
+				\Toastr::error('Error, intentalo mas tarde');
+				return redirect()->back();
+			}
+
+			$testi = Testimonio::find($request->testimonio);
+			if (!empty($testi)) {
+				if (!empty($testi->portada)) {
+					\Storage::disk('local')->delete("/img/photos/testimonios/" . $testi->portada);
+				}
+				$testi->delete();
+				\Toastr::success('Eliminado Exitosamente');
+				return redirect()->back();
+			}
     }
 }

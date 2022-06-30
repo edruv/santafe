@@ -164,11 +164,11 @@ Route::prefix('admin')->group(function(){
 		Route::prefix('testimonios')->name('testimonio.')->group(function () {
 			Route::post('nuevo', 'TestimonioController@store')->name('store');
 			Route::get('detalle/{testi}', 'TestimonioController@show')->name('show');
-			Route::get('edit/{id_var}', 'TestimonioController@edit')->name('edit');
+			Route::get('edit/{testi}', 'TestimonioController@edit')->name('edit');
+			Route::put('up/{testi}', 'TestimonioController@update')->name('update');
 			Route::put('upimg/{id}', 'TestimonioController@updateimg')->name('updateimg');
-			// Route::put('/{id_var}', 'TestimonioController@update')->name('update');
-		// 	Route::delete('pv/', 'TestimonioController@destroy')->name('delete');
-			Route::get('destroy/{id}', 'TestimonioController@destroy')->name('delete');
+			Route::delete('del/', 'TestimonioController@destroy')->name('delete');
+			// Route::get('destroy/{id}', 'TestimonioController@destroy')->name('delete');
 		});
 
 		Route::name('rel.')->group(function(){

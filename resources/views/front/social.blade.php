@@ -5,8 +5,8 @@
 @endsection
 @section('styleExtras')
 	<link rel="stylesheet" href="{{asset('css/index.css')}}">
-	<link rel="stylesheet" href="{{ asset('css/owlcarousel/owl.carousel.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/owlcarousel/owl.theme.default.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('vendor/slick/slick.css') }}">
+	<link rel="stylesheet" href="{{ asset('vendor/slick/slick-theme.css') }}">
 @endsection
 @section('cssExtras')
 	<style media="screen">
@@ -95,7 +95,7 @@
 						@foreach ($testimonios as $testi)
 							<div>
 								@if ($testi->portada)
-									<img src="{{ asset("img/photos/testimonios/".$testi->portada) }}" alt="" class="img-fluid rounded-circle my-3" style="width:5em;height:5em;">
+									<img src="{{ asset("img/photos/testimonios/".$testi->portada) }}" alt="" class="img-fluid rounded-circle my-3 mx-auto" style="width:5em;height:5em;">
 								@endif
 								<div class="text-santafe-sua fw-bold py-2">
 									{{ $testi->nombre }}
@@ -172,41 +172,51 @@
 	</div>
 @endsection
 @section('jsLibExtras2')
-	<script src="{{ asset('js/owlcarousel/owl.carousel.min.js') }}"></script>
-	<script src="{{ asset('js/owlcarousel/owlCarousel2Rows.js') }}"></script>
+	<script src="{{ asset('vendor/slick/slick.js') }}"></script>
 @endsection
 @section('jqueryExtra')
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("#carruselTesti").owlCarousel({
-				// loop:true,
-				loop: false,
-				rewind: true,
-				navigation : false,
-				nav:false,
-				responsiveClass:true,
-				responsive:{
-					0:{
-						items:1,
-					},
-				}
+			$('#carruselTesti').slick({
+				dots: true,
+				infinite: false,
+				speed: 300,
+				slidesToShow: 1,
+				slidesToScroll: 1
 			});
-			$("#recomend").owlCarousel({
-				// loop:true,
-				loop: false,
-				rewind: true,
-				navigation : false,
-				nav:false,
-				responsiveClass:true,
-				responsive:{
-					0:{
-						items:1,
-					},
-					600:{
-						items:2,
-					},
-				}
+			$('#recomend').slick({
+				dots: true,
+				infinite: false,
+				speed: 300,
+				slidesToShow: 2,
+				slidesToScroll: 2,
+				responsive: [
+					{
+						breakpoint: 480,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}
+				]
 			});
+
+			// $("#recomend").owlCarousel({
+			// 	// loop:true,
+			// 	loop: false,
+			// 	rewind: true,
+			// 	navigation : false,
+			// 	nav:false,
+			// 	responsiveClass:true,
+			// 	responsive:{
+			// 		0:{
+			// 			items:1,
+			// 		},
+			// 		600:{
+			// 			items:2,
+			// 		},
+			// 	}
+			// });
 			$("#carruselImg").owlCarousel({
 				// loop:true,
 				loop: false,

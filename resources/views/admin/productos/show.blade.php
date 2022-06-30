@@ -206,60 +206,58 @@
 		</div>
 	</div> --}}
 
-	@if ($product->categoria->id == 1 || $product->categoria->id == 2)
-		<div class="card mt-3">
-			<div class="card-header grey lighten-2">
-				<div class="d-flex align-items-center justify-content-between">
-					<div class="">
-						Testimonios
-					</div>
-					<div class="">
-						<button class="btn btn-sm py-1 btn-primary" data-toggle="modal" data-target="#variante"><i class="fa fa-plus "></i></button>
-					</div>
+	<div class="card mt-3">
+		<div class="card-header grey lighten-2">
+			<div class="d-flex align-items-center justify-content-between">
+				<div class="">
+					Testimonios
+				</div>
+				<div class="">
+					<button class="btn btn-sm py-1 btn-primary" data-toggle="modal" data-target="#variante"><i class="fa fa-plus "></i></button>
 				</div>
 			</div>
-			<div class="table-responsive">
-				<table id="variantes" class="card-table table table-striped table-sm">
-					<thead>
-						<tr>
-							{{-- <th scope="col">ID</th> --}}
-							<th scope="col">Nombre</th>
-							{{-- <th scope="col">Descripción</th> --}}
-							<th style="width: 5rem; text-align:center;">Activo</th>
-							<th style="width: 5rem; text-align:center;" scope="col">Ops</th>
-						</tr>
-					</thead>
-					<tbody>
-						@foreach ($testimonios as $testi)
-							<tr>
-								<td>{{ $testi->nombre }}</td>
-								{{-- <td>{{ $testi->descripcion }}</td> --}}
-								<td class="align-middle text-center">
-									<div class="custom-control custom-switch" data-table="Testimonio" data-campo="activo">
-										<input type="checkbox" @if ($testi->activo) checked
-										@endif class="custom-control-input swiToAj" data-id="{{$testi->id}}" id="AswiTo-{{$testi->id}}">
-										<label class="custom-control-label" for="AswiTo-{{$testi->id}}"></label>
-									</div>
-								</td>
-								<td class="align-middle">
-									<div class="dropdown text-center">
-										<a href="" class="btn btn-link btn-sm dropdown py-0" id="dropvariant" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<i class="fas fa-ellipsis-v"></i>
-										</a>
-										<div class="dropdown-menu" aria-labelledby="dropvariant">
-											<a class="dropdown-item" href="{{route('productos.testimonio.show', $testi->id)}}"><i class="fas fa-info-circle"></i> Ver más</a>
-											<a class="dropdown-item" href="{{route('productos.testimonio.edit', $testi->id)}}"><i class="far fa-fw fa-edit"></i> Editar</a>
-											<button type="button" class="dropdown-item" data-toggle="modal" data-target="#frameModalDel" data-id="{{$testi->id}}"><i class="fas fa-fw fa-trash-alt"></i> Eliminar </button>
-										</div>
-									</div>
-								</td>
-							</tr>
-						@endforeach
-					</tbody>
-				</table>
-			</div>
 		</div>
-	@endif
+		<div class="table-responsive">
+			<table id="variantes" class="card-table table table-striped table-sm">
+				<thead>
+					<tr>
+						{{-- <th scope="col">ID</th> --}}
+						<th scope="col">Nombre</th>
+						{{-- <th scope="col">Descripción</th> --}}
+						<th style="width: 5rem; text-align:center;">Activo</th>
+						<th style="width: 5rem; text-align:center;" scope="col">Ops</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach ($testimonios as $testi)
+						<tr>
+							<td>{{ $testi->nombre }}</td>
+							{{-- <td>{{ $testi->descripcion }}</td> --}}
+							<td class="align-middle text-center">
+								<div class="custom-control custom-switch" data-table="Testimonio" data-campo="activo">
+									<input type="checkbox" @if ($testi->activo) checked
+									@endif class="custom-control-input swiToAj" data-id="{{$testi->id}}" id="AswiTo-{{$testi->id}}">
+									<label class="custom-control-label" for="AswiTo-{{$testi->id}}"></label>
+								</div>
+							</td>
+							<td class="align-middle">
+								<div class="dropdown text-center">
+									<a href="" class="btn btn-link btn-sm dropdown py-0" id="dropvariant" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<i class="fas fa-ellipsis-v"></i>
+									</a>
+									<div class="dropdown-menu" aria-labelledby="dropvariant">
+										<a class="dropdown-item" href="{{route('productos.testimonio.show', $testi->id)}}"><i class="fas fa-info-circle"></i> Ver más</a>
+										<a class="dropdown-item" href="{{route('productos.testimonio.edit', $testi->id)}}"><i class="far fa-fw fa-edit"></i> Editar</a>
+										<button type="button" class="dropdown-item ModalDelTest" data-toggle="modal" data-target="#ModalDelTest" data-id="{{$testi->id}}"><i class="fas fa-fw fa-trash-alt"></i> Eliminar </button>
+									</div>
+								</div>
+							</td>
+						</tr>
+					@endforeach
+				</tbody>
+			</table>
+		</div>
+	</div>
 
 	<div class="modal fade" id="variante"  tabindex="-1">
 			<div class="modal-dialog">
@@ -314,6 +312,27 @@
 		</div>
 	</div>
 
+	<div class="modal fade bottom" id="ModalDelTest" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-frame modal-top" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row d-flex justify-content-center align-items-center">
+						<p class="pt-3 pr-2">
+							Eliminar testimonio?
+						</p>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+						<button type="button" class="btn red darken-3 text-white deltest">Eliminar</button>
+						<form id="testidel" action="{{ route('productos.testimonio.delete') }}" method="POST" style="display: none;">
+								@csrf
+								 @method('delete')
+								<input type="hidden" id="itdel" name="testimonio" value="">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 @endsection
 @section('jsLibExtras2')
 <script src="{{asset('js/dropify.js')}}" charset="utf-8"></script>
@@ -351,6 +370,15 @@
 
 			$('.delphoto').click(function(e) {
 				$('#photodel').submit();
+			});
+
+			$('.ModalDelTest .fa-trash-alt').parent().click(function(e) {
+				var id = $(this).attr('data-id');
+				$("#itdel").val(id);
+			});
+
+			$('#ModalDelTest .deltest').click(function(e) {
+				$('#testidel').submit();
 			});
 
 			$("#fileuploader").uploadFile({

@@ -5,8 +5,8 @@
 @endsection
 @section('styleExtras')
 	<link rel="stylesheet" href="{{asset('css/index.css')}}">
-	<link rel="stylesheet" href="{{ asset('css/owlcarousel/owl.carousel.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/owlcarousel/owl.theme.default.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('vendor/slick/slick.css') }}">
+	<link rel="stylesheet" href="{{ asset('vendor/slick/slick-theme.css') }}">
 @endsection
 @section('cssExtras')
 	<style media="screen">
@@ -48,14 +48,20 @@
 			<div class="row">
 
 				<div class="col-12 col-md-4 p-2">
-					<div class="text-center h-100 p-3 d-flex align-items-center" style="background:#ededed;">
-						<div>
-							<img src="{{ asset("img/photos/tmps/demo (1).png") }}" alt="" class="img-fluid rounded-circle my-3" style="width:5em;height:5em;">
-							<div class="text-santafe-sua fw-bold py-2">
-								Lorem ipsum dolor.
+					<div id="carruselTesti" class="text-center h-100 p-3 d-flex align-items-center" style="background:#ededed;">
+						@foreach ($testimonios as $testi)
+							<div>
+								@if ($testi->portada)
+									<img src="{{ asset("img/photos/testimonios/".$testi->portada) }}" alt="" class="img-fluid rounded-circle my-3 mx-auto" style="width:5em;height:5em;">
+								@endif
+								<div class="text-santafe-sua fw-bold py-2">
+									{{ $testi->nombre }}
+								</div>
+								<div class="">
+									{!! $testi->descripcion !!}
+								</div>
 							</div>
-							<div class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, aspernatur totam culpa, consequatur laboriosam odio sint magni impedit suscipit modi neque saepe veniam reprehenderit veritatis. Unde ducimus et ea enim.</div>
-						</div>
+						@endforeach
 					</div>
 				</div>
 				<div class="col-12 col-md p-2">
@@ -82,47 +88,17 @@
 	</div>
 @endsection
 @section('jsLibExtras2')
-	<script src="{{ asset('js/owlcarousel/owl.carousel.min.js') }}"></script>
-	<script src="{{ asset('js/owlcarousel/owlCarousel2Rows.js') }}"></script>
+	<script src="{{ asset('vendor/slick/slick.js') }}"></script>
 @endsection
 @section('jqueryExtra')
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("#carruselImg").owlCarousel({
-				// loop:true,
-				loop: false,
-				rewind: true,
-				margin:10,
-				responsiveClass:true,
-				responsive:{
-					0:{
-						items:1,
-					},
-					600:{
-						items:1,
-					},
-					1000:{
-						items:1,
-					}
-				}
-			});
-			$("#carrusel4").owlCarousel({
-				// loop:true,
-				loop: false,
-				rewind: true,
-				margin:10,
-				responsiveClass:true,
-				responsive:{
-					0:{
-						items:1,
-					},
-					600:{
-						items:2,
-					},
-					1000:{
-						items:4,
-					}
-				}
+			$('#carruselTesti').slick({
+				dots: true,
+				infinite: false,
+				speed: 300,
+				slidesToShow: 1,
+				slidesToScroll: 1
 			});
 
 			$(".medidas-select").change(function(){

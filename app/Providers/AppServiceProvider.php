@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
         //
         // Schema::defaultStringLength(125);
 				$configs = Configuracion::find(1);
-				$prods = Producto::all();
+				$prods = Producto::orderBy('orden','asc')->get();
         // $cats = Categoria::all();
 
 				View::share([

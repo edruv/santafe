@@ -7,6 +7,7 @@ use App\ProductosPhoto;
 use App\ProductoMedida;
 use App\Categoria;
 use App\Marca;
+use App\Testimonio;
 use App\ProductoRelacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -20,7 +21,7 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-		$products = Producto::orderBy('orden', 'asc')->get();
+		$products = Producto::orderBy('categoria', 'asc')->orderBy('orden', 'asc')->get();
 
 		foreach ($products as $prod) {
 			$prod->categoria = Categoria::find($prod->categoria);
@@ -221,7 +222,15 @@ class ProductoController extends Controller
 // NOTE: eliminar fotos, portadas, etc
 
         $photos = ProductosPhoto::where('producto',$producto->id)->delete();
+				$testi = Testimonio::where('producto',$producto->id)->get();
 
+				foreach ($testi as $tes) {
+					if (!empty($tes->portada)) {
+	  				\Storage::disk('local')->delete("/img/photos/testimonios/" . $tes->portada);
+	  			}
+				}
+
+				Testimonio::where('producto',$producto->id)->delete();
 				$producto->delete();
 				\Toastr::success('Eliminado Exitosamente');
 				return redirect()->back();
