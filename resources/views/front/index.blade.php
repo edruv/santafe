@@ -42,9 +42,16 @@
 						@if ($item->image)
 							<img src="{{ asset('img/photos/sliders/'.$item->image) }}" class="d-block w-100" alt="{{ $item->image }}">
 							@if ($item->url)
-								<div class="carousel-caption d-none d-md-block">
+								<div class="carousel-caption d-none d-md-block text-start">
 									<div>
-										<a href="{{$item->url}}" class="btn btn-lg w-25 btn-primary" style="background:#000;border:2px #000 solid;">
+										<a href="{{$item->url}}" class="btn btn-lg w-25 btn-primary" style="background:#fff;border:2px #6E037A solid;color:#000">
+											{{$item->titulo}}
+										</a>
+									</div>
+								</div>
+								<div class="carousel-caption d-md-none">
+									<div>
+										<a href="{{$item->url}}" class="btn btn-sm w-100 btn-primary" style="background:#fff;border:2px #6E037A solid;color:#000">
 											{{$item->titulo}}
 										</a>
 									</div>
@@ -163,7 +170,7 @@
 				<div class="py-4">
 					Organización <br>
 					<span class="" style="color:#5E5B5C;">Para Eventos</span>
-					<a href="{{ route('front.contact')}}" class="btn btn-santafe">VER MÁS</a>
+					<a href="{{ route('front.contact')}}" class="btn btn-santafe">Cotizar</a>
 				</div>
 			</div>
 		</div>
@@ -185,10 +192,10 @@
 				<div class="py-4">
 					Música <br>
 					<span class="" style="color:#5E5B5C;">Para Eventos</span>
-					<a href="{{ route('front.contact')}}" class="btn btn-santafe">VER MÁS</a>
+					<a href="{{ route('front.contact')}}" class="btn btn-santafe">Cotizar</a>
 				</div>
 			</div>
-			<div class="col-12 col-md">
+			<div class="col-12 col-md-10">
 				<div class="sli-carouselTree">
 					@foreach ($desta as $dest)
 						@if ($dest->categoria == 3 )

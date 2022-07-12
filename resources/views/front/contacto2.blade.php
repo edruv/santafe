@@ -8,9 +8,9 @@
 		/* background: #000; */
 		border: 2px #6E037A solid;
 		border-radius: 3em 0 0 3em;
-		color: #fff;
+		color: #6E037A;
 	}
-	#formcontact .input-group input::placeholder, #formcontact .input-group textarea::placeholder {
+	#formcontact .input-group input::placeholder, #formcontact .input-group textarea::placeholder, #formcontact .input-group date::placeholder {
 		color: #6E037A;
 	}
 	#formcontact .input-group input:focus, #formcontact .input-group textarea:focus {
@@ -42,7 +42,7 @@
 					</div>
 				</div>
 				<div class="col-12 col-md-6 text-center">
-					<img src="{{ asset('img/design/logo.png') }}" alt="" class="img-fluid py-3">
+					<img src="{{ asset('img/design/logo w.jpg') }}" alt="logo w.jpg" class="img-fluid py-3 w-50">
 					<div class="h5 text-santafe-sua text-uppercase py-2">mi registro aqui</div>
 					<form action="{{ route('mailcontactTwo')}}" id="formcontact" class="col-12 col-md-11 mx-auto" method="post">
 						@csrf

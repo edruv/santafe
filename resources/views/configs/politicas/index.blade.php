@@ -24,7 +24,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="col-12 col-md-6 text-center my-3">
+		{{-- <div class="col-12 col-md-6 text-center my-3">
 			<div class="card">
 				<form action="{{ route('config.politica.update',$politicas[1]->id) }}" method="post" class="card-body">
 					@csrf
@@ -49,7 +49,7 @@
 					</div>
 				</form>
 			</div>
-		</div>
+		</div> --}}
 		<div class="col-12 col-md-6 text-center my-3">
 			<div class="card">
 				<form action="{{ route('config.politica.update',$politicas[3]->id) }}" method="post" class="card-body">
@@ -63,7 +63,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="col-12 col-md-6 text-center my-3">
+		{{-- <div class="col-12 col-md-6 text-center my-3">
 			<div class="card">
 				<form action="{{ route('config.politica.update',$politicas[4]->id) }}" method="post" class="card-body">
 					@csrf
@@ -75,7 +75,7 @@
 					</div>
 				</form>
 			</div>
-		</div>
+		</div> --}}
 	</div>
 @endsection
 @section('jsLibExtras2')

@@ -13,7 +13,7 @@
 	</section>
 	<div class="container"  style="min-height:55vh">
 		<div class="my-4 p-5" style="background:url(img/photos/nosotros/bg-contacto.png);/* background-repeat: no-repeat; */background-position: center;">
-			<div class="col-12 col-md-8 p-4 mx-auto bg-white" style="border: .5em solid rgba(110, 3, 122,.6);border-radius:5px;">
+			<div class="col-12 col-md-10 p-4 mx-auto bg-white" style="border: .5em solid rgba(110, 3, 122,.6);border-radius:5px;">
 				{!! $politica->descripcion !!}
 			</div>
 		</div>

@@ -95,7 +95,7 @@
 			text-align:center;
 			color:white;
 			">
-			<a href="{{url('/')}}"><img src="{{asset('img/design/logo.png')}}" style="width: 200px;background:#6E037A;padding: 2px;border-radius: 5px;"></a>
+			<a href="{{url('/')}}"><img src="{{asset('img/design/logo.jpg')}}" style="width: 200px;background:#6E037A;padding: 2px;border-radius: 5px;"></a>
 			<br /><br />
 			<a href="{{url('/')}}" style="color:white;">{{url('/')}}</a>
 			<br /><br />

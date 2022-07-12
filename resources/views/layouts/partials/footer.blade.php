@@ -6,6 +6,7 @@
 				<div class="w-100 mb-3" style="background:#fff;height:5px;"></div>
 				<ul class="list-unstyled ms-3">
 					<li><a href="{{ route('front.index') }}">INICIO</a></li>
+					<li><a href="{{ route('front.recintos') }}">RECINTOS</a></li>
 					<li><a href="{{ route('front.contacto') }}">CONTACTO</a></li>
 				</ul>
 			</div>
@@ -13,10 +14,10 @@
 				<p class="">SOCIAL</p>
 				<div class="w-100 mb-3" style="background:#fff;height:5px;"></div>
 				<ul class="list-unstyled ms-3">
-					<li><a href="{{ route('front.contacto') }}">CONTACTO</a></li>
+					<li><a href="{{ route('front.contact') }}">COTIZACION</a></li>
 					<li><a href="{{ route('front.faqs') }}">FAQ</a></li>
 					<li><a href="{{ route('front.aviso') }}">AVISO DE PRIVACIDAD</a></li>
-					<li><a href="{{ route('front.contact') }}">COTIZACION</a></li>
+					<li><a href="{{ route('front.tyc') }}">TERMINOS Y CONDICIONES</a></li>
 				</ul>
 			</div>
 			<div class="col-12 col-lg-4">
@@ -40,14 +41,21 @@
 		<div class="row">
 			<div class="col-12 col-lg text-center text-md-start py-2">
 				<a href="{{ route('front.index') }}">
-					<img src="{{ asset('img/design/logo.png') }}" alt="logo.png" class="w-50">
+					<img src="{{ asset('img/design/logo.jpg') }}" alt="logo.jpg" class="w-50">
 				</a>
 			</div>
 			<div class="col-12 col-lg py-2">
 				<div class="text-center text-md-end">
 					<a href="https://wa.me/52{{ $config->whatsapp }}"><i class="mx-1 fab fa-whatsapp" style="font-size:1.5em;"></i></a>
-					<a href="{{$config->instagram}}"><i class="mx-1 fab fa-instagram" style="font-size:1.5em;"></i></a>
-					<a href="{{$config->facebook}}"><i class="mx-1 fab fa-facebook" style="font-size:1.5em;"></i></a>
+					@if ($config->instagram)
+						<a href="{{$config->instagram}}"><i class="mx-1 fab fa-instagram" style="font-size:1.5em;"></i></a>
+					@endif
+					@if ($config->facebook)
+						<a href="{{$config->facebook}}"><i class="mx-1 fab fa-facebook" style="font-size:1.5em;"></i></a>
+					@endif
+					@if ($config->youtube)
+						<a href="{{$config->youtube}}"><i class="mx-1 fab fa-youtube" style="font-size:1.5em;"></i></a>
+					@endif
 				</div>
 			</div>
 		</div>
