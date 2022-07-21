@@ -51,7 +51,7 @@
 				</button>
 			</div>
 			<div class="row">
-				<div class="col-12 col-md-4 p-2 order-1 order-sm-0">
+				<div class="col-12 col-md-4 p-2">
 					<div id="carouselSecondary" class="carousel slide" data-bs-ride="carousel">
 						<div class="carousel-inner">
 							@foreach ($product->gallery2 as $gal)
@@ -70,7 +70,7 @@
 						</button>
 					</div>
 				</div>
-				<div class="col-12 col-md p-2 order-0 order-sm-1">
+				<div class="col-12 col-md-8 p-2 ">
 					<div class="bg-santafe-sua text-white">
 						<div class="p-3">
 							{!! $product->descripcion !!}
@@ -88,9 +88,9 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-12 col-md-4 p-2">
+			{{-- </div>
+			<div class="row"> --}}
+				<div class="col-12 col-md-4 p-2 order-2 order-sm-1">
 					<div id="carruselTesti" class="text-center h-100 p-3 d-flex align-items-center" style="background:#ededed;">
 						@foreach ($testimonios as $testi)
 							<div>
@@ -118,7 +118,7 @@
 					</div> --}}
 				</div>
 
-				<div class="col-12 col-md-8 p-2" id="recomend">
+				<div class="col-12 col-md-8 p-2 order-1 order-sm-2" id="recomend">
 					@foreach ($productos_rel as $rel)
 						@php
 						switch ($rel->categoria) {

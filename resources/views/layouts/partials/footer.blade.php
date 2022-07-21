@@ -33,6 +33,10 @@
 						<a href="tel:{{$config->telefono}}">{{$config->telefono}}</a>
 					</li>
 					<li>
+						Whatsapp:
+						<a href="https://wa.me/52{{$config->whatsapp}}">{{$config->whatsapp}}</a>
+					</li>
+					<li>
 						{{ $config->direccion }}
 					</li>
 				</ul>
@@ -45,8 +49,8 @@
 				</a>
 			</div>
 			<div class="col-12 col-lg py-2">
-				<div class="text-center text-md-end">
-					<a href="https://wa.me/52{{ $config->whatsapp }}"><i class="mx-1 fab fa-whatsapp" style="font-size:1.5em;"></i></a>
+				<div class="text-center">
+					{{-- <a href="https://wa.me/52{{ $config->whatsapp }}"><i class="mx-1 fab fa-whatsapp" style="font-size:1.5em;"></i></a> --}}
 					@if ($config->instagram)
 						<a href="{{$config->instagram}}"><i class="mx-1 fab fa-instagram" style="font-size:1.5em;"></i></a>
 					@endif
@@ -55,6 +59,20 @@
 					@endif
 					@if ($config->youtube)
 						<a href="{{$config->youtube}}"><i class="mx-1 fab fa-youtube" style="font-size:1.5em;"></i></a>
+					@endif
+				</div>
+			</div>
+			<div class="col-12 col-lg py-2">
+				<div class="text-center">
+					{{-- <a href="https://wa.me/52{{ $config->whatsapp }}"><i class="mx-1 fab fa-whatsapp" style="font-size:1.5em;"></i></a> --}}
+					@if ($config->instagram2)
+						<a href="{{$config->instagram2}}"><i class="mx-1 fab fa-instagram" style="font-size:1.5em;"></i></a>
+					@endif
+					@if ($config->facebook2)
+						<a href="{{$config->facebook2}}"><i class="mx-1 fab fa-facebook" style="font-size:1.5em;"></i></a>
+					@endif
+					@if ($config->youtube2)
+						<a href="{{$config->youtube2}}"><i class="mx-1 fab fa-youtube" style="font-size:1.5em;"></i></a>
 					@endif
 				</div>
 			</div>

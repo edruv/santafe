@@ -42,6 +42,25 @@
 		<div class="col-12 col-md-4 p-2">
 			<div class=" h-100 card">
 				<div class="card-body">
+					<h5 class="card-title text-center">Redes sociales 2</h5>
+					<div class="form-group">
+						<label for="fb2"> Facebook</label>
+						<input type="text" class="form-control editarajax" id="fb2" name="fb2" data-id="{{$data->id}}" data-table="configuracion" data-campo="facebook2"  value="{{ $data->facebook2 }}">
+					</div>
+					<div class="form-group">
+						<label for="ig2"> Instagram</label>
+						<input type="text" class="form-control editarajax" id="ig2" name="ig2" data-id="{{$data->id}}" data-table="configuracion" data-campo="instagram2"  value="{{ $data->instagram2 }}">
+					</div>
+					<div class="form-group">
+						<label for="yt2"> YouTube </label>
+						<input type="text" class="form-control editarajax" id="yt2" name="yt2" data-id="{{$data->id}}" data-table="configuracion" data-campo="youtube2"  value="{{ $data->youtube2 }}">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-md-4 p-2">
+			<div class=" h-100 card">
+				<div class="card-body">
 					<h5 class="card-title text-center">Envío de correo</h5>
 					<div class="form-group">
 						<label for="destinatario">  Destinatario 1 </label>

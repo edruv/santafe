@@ -55,7 +55,7 @@
 	</div>
 	<div class="row mt-3 sortable" data-table="Carrusel">
 		@foreach ($sliders as $slide)
-			<div class="col-12 col-md-3 col-lg-3 my-2 my-md-1 p-2" data-card="{{$slide->id}}">
+			<div class="col-12 col-md-4 col-lg-4 my-2 my-md-1 p-2" data-card="{{$slide->id}}">
 				<div class="card h-100 p-2">
 					<div class="d-flex justify-content-end">
 						<button class="btn btn-sm bg-danger position-absolute text-center text-white" type="button" data-toggle="modal" data-target="#frameModalDel" data-id="{{$slide->id}}" style="z-index: 2;">
@@ -71,17 +71,18 @@
 					</a>
 					<div class="card-body p-2">
 						<div class="text-center mb-1">
-							<small><label class="mb-0" for="titulo">Titulo</label></small>
+							<small><label class="mb-0" for="titulo">Boton</label></small>
 							<input type="text" name="titulo" id="titulo" class="form-control form-control-sm editarajax" data-id="{{$slide->id}}" data-table="carrusel" data-campo="titulo"  value="{{ $slide->titulo }}">
 						</div>
-						{{-- <div class="text-center mb-1">
-							<small><label class="mb-0" for="subtitulo">Subtitulo</label></small>
-							<input type="text" name="subtitulo" id="subtitulo" class="form-control form-control-sm editarajax" data-id="{{$slide->id}}" data-table="carrusel" data-campo="subtitulo"  value="{{ $slide->subtitulo }}">
-						</div> --}}
 						<div class="text-center mb-1">
 							<small><label class="mb-0" for="url">URL</label></small>
 							<input type="text" name="url" id="url" class="form-control form-control-sm editarajax" data-id="{{$slide->id}}" data-table="carrusel" data-campo="url"  value="{{ $slide->url }}">
 						</div>
+					</div>
+					<div class="text-center mb-1">
+						<small><label class="mb-0" for="subtitulo">Texto</label></small>
+						<textarea class="form-control form-control-sm editarajax" name="subtitulo" id="subtitulo" rows="2" data-id="{{$slide->id}}" data-table="carrusel" data-campo="subtitulo">{{ $slide->subtitulo }}</textarea>
+						{{-- <input type="text" name="subtitulo" id="subtitulo" class="form-control form-control-sm editarajax" data-id="{{$slide->id}}" data-table="carrusel" data-campo="subtitulo"  value="{{ $slide->subtitulo }}"> --}}
 					</div>
 					@else
 					<a href="{{$slide->video['url']}}" target="_blank">
@@ -138,5 +139,29 @@
 			});
 
 		});
+		tinymce.init({
+			selector: 'textarea',
+			// plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+			// toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
+			menubar: false,
+			plugins: [
+				'advlist autolink lists link image charmap print preview anchor',
+				'searchreplace visualblocks code fullscreen',
+				'insertdatetime media table paste code help wordcount',
+				'advlist autolink lists link image charmap print preview anchor wordcount',
+
+				'searchreplace visualblocks code fullscreen table visualblocks',
+				'insertdatetime media table contextmenu paste code imagetools',
+				'textcolor colorpicker'
+			],
+			// toolbar: 'undo redo | formatselect | ' +
+			// 'bold italic backcolor | alignleft aligncenter ' +
+			// 'alignright alignjustify | bullist numlist outdent indent | ' +
+			// 'removeformat | help',
+			toolbar: 'forecolor backcolor | insert table | undo redo | removeformat styleselect |  bold italic underline |  alignleft aligncenter alignright alignjustify |  bullist numlist | outdent indent | link image | code visualblocks',
+			resize: false,
+			content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+			body_class : "editarajax"
+	 });
 	</script>
 @endsection

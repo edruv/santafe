@@ -34,6 +34,29 @@
 </style>
 @endsection
 @section('content')
+
+	{{-- <section>
+		<div id="" class="sli-carouselCero mx-auto">
+			@foreach ($carrusel as $item)
+				<div>
+
+					@if ($item->image)
+						<img src="{{ asset('img/photos/sliders/'.$item->image) }}" class="d-block w-100" alt="{{ $item->image }}">
+						@if ($item->url)
+								<div>
+									<a href="{{$item->url}}" class="btn btn-lg w-25 btn-primary" style="background:#fff;border:2px #6E037A solid;color:#000">
+										{{$item->titulo}}
+									</a>
+								</div>
+						@endif
+					@else
+							<iframe class="" style="height:600px;" src="https://www.youtube.com/embed/{{$item->video['idVideo']}}?rel=0" allowfullscreen></iframe>
+					@endif
+				</div>
+				@endforeach
+
+		</div>
+	</section> --}}
 	<section>
 		<div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
 			<div class="carousel-inner">
@@ -383,6 +406,7 @@
 @section('jqueryExtra')
 	<script type="text/javascript">
 		$(document).ready(function() {
+			$('.sli-carouselCero').slick();
 			$('.sli-carousel').slick();
 			$('.sli-carouseltwo').slick({
 				dots: true,
